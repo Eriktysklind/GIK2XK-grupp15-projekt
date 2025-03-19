@@ -22,7 +22,7 @@ router.post('/:id/addCart/', (req, res) => {
   const cart = req.body;
   const id = req.params.id;
 
-  userService.addComment(id, cart).then((result) => {
+  userService.addCart(id, cart).then((result) => {
     res.status(result.status).json(result.data);
   });
 });
