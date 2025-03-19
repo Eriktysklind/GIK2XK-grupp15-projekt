@@ -17,17 +17,17 @@ const constraints = {
     },
 // SE över en constraint för password
   };
-/* router.post('/:id/addComment', (req, res) => {
-  const comment = req.body;
+router.post('/:id/addCart/', (req, res) => {
+    // BYgg denna funktion för att hämta alla produkter i varukorgen
+  const cart = req.body;
   const id = req.params.id;
 
-  userService.addComment(id, comment).then((result) => {
+  userService.addComment(id, cart).then((result) => {
     res.status(result.status).json(result.data);
   });
-}); */
+});
 
-router.get('/:id/getCart/', (req, res) => {
-    // BYgg denna funktion för att hämta alla produkter i varukorgen
+router.get('/:id', (req, res) => {
   const id = req.params.id;
 
   userService.getById(id).then((result) => {

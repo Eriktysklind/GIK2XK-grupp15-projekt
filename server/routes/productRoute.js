@@ -2,13 +2,22 @@ const router = require('express').Router();
 const productService = require('../services/productService');
 
 router.post('/:id/addRating', (req, res) => {
-  const comment = req.body;
+  const rating = req.body;
   const id = req.params.id;
 
-  productService.addComment(id, comment).then((result) => {
+  productService.addComment(id, rating).then((result) => {
     res.status(result.status).json(result.data);
   });
 });
+
+router.post('/:id/addToCart', (req, res) => {
+    const { userId, amount } = req.body; 
+    const productId = req.params.id;
+  
+    productService.addToCart(userId, productId, amount).then((result) => {
+      res.status(result.status).json(result.data);
+    });
+  });
 
 router.get('/:id', (req, res) => {
   const id = req.params.id;
