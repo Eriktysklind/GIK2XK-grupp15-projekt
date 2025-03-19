@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             validate: {
               len: [4, 100],
-              isPassword: true
+              //isPassword: true
               // Se över hur vi ska kontrollera lösenorder för användaren
             }
           },
