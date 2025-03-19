@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const productService = require('../services/productService');
 
-/* router.post('/:id/addComment', (req, res) => {
+router.post('/:id/addRating', (req, res) => {
   const comment = req.body;
   const id = req.params.id;
 
   productService.addComment(id, comment).then((result) => {
     res.status(result.status).json(result.data);
   });
-}); */
+});
 
 router.get('/:id', (req, res) => {
   const id = req.params.id;
@@ -25,17 +25,17 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const post = req.body;
-  productService.create(post).then((result) => {
+  const product = req.body;
+  productService.create(product).then((result) => {
     res.status(result.status).json(result.data);
   });
 });
 
 router.put('/', (req, res) => {
-  const post = req.body;
-  const id = post.id;
+  const product = req.body;
+  const id = product.id;
 
-  productService.update(post, id).then((result) => {
+  productService.update(product, id).then((result) => {
     res.status(result.status).json(result.data);
   });
 });

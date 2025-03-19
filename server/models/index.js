@@ -37,6 +37,15 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+db.cart.belongsTo(db.user, {foreignKey: { allowNull: false }});
+db.user.hasMany(db.cart, { allowNull: false });
+
+db.rating.belongsTo(db.product, {foreignKey: { allowNull: false }});
+db.product.hasMany(db.rating, { allowNull: false });
+
+db.product.belongsToMany(db.cart, { through: db.cartRow });
+db.cart.belongsToMany(db.product, { through: db.cartRow });
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
