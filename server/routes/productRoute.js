@@ -2,6 +2,7 @@ const router = require('express').Router();
 const productService = require('../services/productService');
 
 router.post('/:id/addRating', (req, res) => {
+  // SE över hur vi ratingen ska fungera och hur man löser snitt betyget
   const rating = req.body;
   const id = req.params.id;
 
@@ -11,10 +12,11 @@ router.post('/:id/addRating', (req, res) => {
 });
 
 router.post('/:id/addToCart', (req, res) => {
-    const { userId, amount } = req.body; 
-    const productId = req.params.id;
+  // Bygga funktionaliteten för att placera produkter i varukorgen.
+    const { userId, amount, productId } = req.body; 
+    const cartId = req.params.id;
   
-    productService.addToCart(userId, productId, amount).then((result) => {
+    productService.addToCart(userId, productId, amount, cartId).then((result) => {
       res.status(result.status).json(result.data);
     });
   });

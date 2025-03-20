@@ -17,7 +17,7 @@ const constraints = {
     },
 // SE över en constraint för password
   };
-router.post('/:id/addCart/', (req, res) => {
+router.get('/:id/getCart/', (req, res) => {
     // BYgg denna funktion för att hämta alla produkter i varukorgen
   const cart = req.body;
   const id = req.params.id;
