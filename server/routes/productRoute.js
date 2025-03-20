@@ -6,7 +6,7 @@ router.post('/:id/addRating', (req, res) => {
   const rating = req.body;
   const id = req.params.id;
 
-  productService.addComment(id, rating).then((result) => {
+  productService.addRating(id, rating).then((result) => {
     res.status(result.status).json(result.data);
   });
 });

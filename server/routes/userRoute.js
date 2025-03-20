@@ -22,7 +22,7 @@ router.get('/:id/getCart/', (req, res) => {
   const cart = req.body;
   const id = req.params.id;
 
-  userService.addCart(id, cart).then((result) => {
+  userService.getCart(id, cart).then((result) => {
     res.status(result.status).json(result.data);
   });
 });
