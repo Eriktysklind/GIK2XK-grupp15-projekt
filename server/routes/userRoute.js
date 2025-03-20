@@ -35,11 +35,17 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.get('/', (req, res) => {
+/* router.get('/', (req, res) => {
+  db.user.findAll().then((result) => {
+    res.send(result);
+  });
+}); */
+//Båda get metoderna fungerar 
+ router.get('/', (req, res) => {
   userService.getAll().then((result) => {
     res.status(result.status).json(result.data);
   });
-});
+}); 
 
 router.post('/', (req, res) => {
   const user = req.body;

@@ -15,14 +15,24 @@ async function getCart() {
             }]
         });
       /* Om allt blev bra, returnera allPosts */
-      return createResponseSuccess(cart.map((cart) => _formatPost(cart)));
+       return createResponseSuccess(cart.map((cart) => _formatPost(cart)));
+    } catch (error) {
+      return createResponseError(error.status, error.message);
+    }
+  }
+
+  async function getAll() {
+    try {
+      const allUsers = await db.user.findAll();
+      /* Om allt blev bra, returnera allPosts */
+      return createResponseSuccess(allUsers);
     } catch (error) {
       return createResponseError(error.status, error.message);
     }
   }
 
 
-
 module.exports = {
     getCart,
-  };
+    getAll
+  }; 
