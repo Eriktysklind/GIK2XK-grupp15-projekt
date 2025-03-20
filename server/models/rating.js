@@ -9,8 +9,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         rating: {
           type: DataTypes.DOUBLE,
-          allowNull: false
-          //Sätta en validate på minsta samt högsta betyg
+          allowNull: false,
+/*           validate: {
+            greaterThan: 0,
+            lessThanOrEqualTO: 5
+          } */
         },
       },
       { underscored: true }

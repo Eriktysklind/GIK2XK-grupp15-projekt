@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const productService = require('../services/productService');
 
-router.post('/:id/addRating', (req, res) => {
+/* router.post('/:id/addRating', (req, res) => {
   // SE över hur vi ratingen ska fungera och hur man löser snitt betyget
   const rating = req.body;
   const id = req.params.id;
@@ -9,6 +9,24 @@ router.post('/:id/addRating', (req, res) => {
   productService.addRating(id, rating).then((result) => {
     res.status(result.status).json(result.data);
   });
+});  */
+
+router.post('/:id/addRating', async (req, res) => {
+  console.log("📥 Inkommande request från Postman:");
+  console.log("➡️ Body:", req.body);
+  console.log("➡️ Produkt ID från URL:", req.params.id);
+
+  try {
+      const rating = req.body;
+      const id = req.params.id;
+
+      const result = await productService.addRating(id, rating);
+      return res.status(result.status).json(result.data);
+  
+  } catch (error) {
+      console.error("❌ Fel i addRating-route:", error);
+      return res.status(500).json({ message: "Ett internt serverfel uppstod vid betygsättningen" });
+  }
 });
 
 router.post('/:id/addToCart', (req, res) => {

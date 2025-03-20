@@ -74,9 +74,37 @@ async function getAll() {
     }
   }
 
+  async function getById(id) {
+    try {
+      const product = await db.product.findOne();
+      /* Om allt blev bra, returnera post */
+      return createResponseSuccess(product);
+    } catch (error) {
+      return createResponseError(error.status, error.message);
+    }
+  }
+
+  async function addRating(id, ratingData) {
+    if (!id) {
+      return createResponseError(422, 'Id är obligatoriskt');
+    }
+    try {
+      const newRating = await db.rating.create({
+          rating: ratingData.value, // Viktigt att detta är rätt
+          productId: id
+      });
+  
+      return createResponseSuccess(newRating);
+    } catch (error) {
+      return createResponseError(error.status, error.message);
+    }
+  } 
+
    module.exports = {
     addToCart,
     getAll,
     getByTitle,
-    create
+    create,
+    addRating, 
+    getById
   }; 
