@@ -21,7 +21,7 @@ const constraints = {
 async function addToCart(userId, productId, amount) {
     try {
         const [cart] = await db.cart.findOrCreate({
-            where: { userId: userId }, // Letar efter varukorg kopplad till userId
+            where: { userId: userId }, 
             defaults: { userId: userId } 
         });
         await db.cartRow.upsert({
@@ -76,7 +76,7 @@ async function getAll() {
 
   async function getById(id) {
     try {
-      const product = await db.product.findOne();
+      const product = await db.product.findOne(id);
       /* Om allt blev bra, returnera post */
       return createResponseSuccess(product);
     } catch (error) {
@@ -90,7 +90,7 @@ async function getAll() {
     }
     try {
       const newRating = await db.rating.create({
-          rating: ratingData.value, // Viktigt att detta är rätt
+          rating: ratingData.value, 
           productId: id
       });
   
@@ -100,11 +100,42 @@ async function getAll() {
     }
   } 
 
+  async function update(product, id) {
+    try {
+      const existingProduct = await db.product.findOne({ where: { id } });
+      if (!existingProduct) {
+        return createResponseError(404, 'Hittade ingen product att uppdatera.');
+      }
+      await db.product.update(product, {
+        where: { id }
+      });
+      return createResponseMessage(200, 'Produkten uppdaterades.');
+    } catch (error) {
+      return createResponseError(error.status, error.message);
+    }
+  }
+
+  async function destroy(id) {
+    if (!id) {
+      return createResponseError(422, 'Id är obligatoriskt');
+    }
+    try {
+      await db.product.destroy({
+        where: { id }
+      });
+      return createResponseMessage(200, 'Produkten har raderades.');
+    } catch (error) {
+      return createResponseError(error.status, error.message);
+    }
+  }
+
    module.exports = {
     addToCart,
     getAll,
     getByTitle,
     create,
     addRating, 
-    getById
+    getById,
+    update,
+    destroy
   }; 

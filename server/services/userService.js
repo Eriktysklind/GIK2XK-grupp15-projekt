@@ -6,7 +6,7 @@ const {
 } = require('../helpers/responseHelper');
 const validate = require('validate.js');
 
-async function getCart() {
+async function getCart(userId) {
     try {
         const cart = await db.cart.findOne({
             where: { userId: userId },
@@ -14,8 +14,7 @@ async function getCart() {
                 model: db.product, // Hämtar produkter direkt via relationen
             }]
         });
-      /* Om allt blev bra, returnera allPosts */
-       return createResponseSuccess(cart.map((cart) => _formatPost(cart)));
+       return createResponseSuccess(cart);
     } catch (error) {
       return createResponseError(error.status, error.message);
     }
@@ -31,8 +30,32 @@ async function getCart() {
     }
   }
 
+  async function getById(id) {
+    try {
+      const user = await db.user.findByPk(id);
+      return createResponseSuccess(user);
+    } catch (error) {
+      return createResponseError(error.status, error.message);
+    }
+  }
+
+    async function destroy(id) {
+      if (!id) {
+        return createResponseError(422, 'Id är obligatoriskt');
+      }
+      try {
+        await db.user.destroy({
+          where: { id: id }
+        });
+        return createResponseMessage(200, 'Användaren har raderades.');
+      } catch (error) {
+        return createResponseError(error.status, error.message);
+      }
+    }
 
 module.exports = {
     getCart,
-    getAll
+    getAll,
+    getById,
+    destroy
   }; 
