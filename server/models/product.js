@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(100),
             allowNull: false
           },
-        description: DataTypes.STRING(500),
+        description: DataTypes.STRING(1000),
         price: {
             type: DataTypes.DOUBLE,
             allowNull: false
         },
         imageUrl: {
-            type: DataTypes.STRING(255),
+            type: DataTypes.STRING(2555),
             validate: {
               isUrl: true
             }
