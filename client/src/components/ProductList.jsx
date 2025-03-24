@@ -1,5 +1,5 @@
 import ProductItemSmall from "./ProductItemSmall";
-import {getAll} from '../services/ProductService';
+import { getAll } from "../services/productService";
 function ProductList() {
     const products = [
         
