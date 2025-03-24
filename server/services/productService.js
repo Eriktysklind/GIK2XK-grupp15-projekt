@@ -38,9 +38,9 @@ async function addToCart(userId, productId, amount) {
 
 async function getAll() {
     try {
-      const allProducts = await db.product.findAll({ include: [db.product] });
-      /* Om allt blev bra, returnera allPosts */
-       return createResponseSuccess(allProducts.map((product) => _formatPost(product)));
+      const allProducts = await db.product.findAll();
+    
+       return createResponseSuccess(allProducts);
     } catch (error) {
       return createResponseError(error.status, error.message);
     }
