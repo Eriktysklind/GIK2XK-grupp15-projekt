@@ -6,6 +6,7 @@ import Products from './views/Products.jsx'
 import ProductDetail from './views/ProductDetail.jsx'
 import Home from './views/Home.jsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import ProductEdit from './componets/ProductEdit.jsx'
 
 const router = createBrowserRouter([
   {path: "/",
@@ -20,8 +21,12 @@ const router = createBrowserRouter([
       element: <Products />
     },
     {
-      path: "products/detail",
+      path: "products/:id",
       element: <ProductDetail/>
+    },
+    {
+      path: "products/:id/edit",
+      element: <ProductEdit/>
     },
     
   ] 
