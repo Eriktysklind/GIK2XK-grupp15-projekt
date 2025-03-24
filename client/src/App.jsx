@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 
 
 function App() {
@@ -7,12 +7,13 @@ function App() {
     <>
     <ul>
       <li>
-        <Link href="/">Webbshop</Link>
+        <Link to="/">Webbshop</Link>
       </li>
       <li>
-        <Link href="/products/all">Se alla producter</Link>
+        <Link to="/products/all">Se alla produkter</Link>
         </li>
       </ul>
+      <Outlet/>
     </>
   )
 }
