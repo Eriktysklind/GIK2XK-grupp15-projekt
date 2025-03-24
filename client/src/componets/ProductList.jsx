@@ -1,5 +1,5 @@
 import ProductItemSmall from "./ProdutctItemSmall";
-
+import {getAll} from '../services/ProductService';
 function ProductList() {
     const products = [
         
@@ -41,6 +41,9 @@ function ProductList() {
             }
         
     ];
+
+getAll().then((products) => console.log(products));
+
     return (
     <ul>
         {products?.length > 0 ? (products.map((product) => (
