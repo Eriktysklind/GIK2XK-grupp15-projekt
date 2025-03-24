@@ -10,10 +10,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use((req, res, next) => {
-    res.header('Acess-Control-Allow-Origin', '*');
-    res.header('Acess-Control-Allow-Headers', '*');
-    res.header('Acess-Control-Allow-Methods', 'GET, PUT, PATCH, POST, DELETE');
-});
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, PATCH, POST, DELETE');
+    next();
+  });
 ///app.use(express.static(path.join(__dirname, 'public')));
 app.use("/product", require("./routes/productRoute"));
 app.use("/users", require("./routes/userRoute"));
