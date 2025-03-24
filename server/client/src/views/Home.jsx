@@ -1,5 +1,14 @@
+import ProductList from "../components/ProductList";
+import Grid from '@mui/material/Grid2';
+
 function Home() {
-    return ( <h2>Home</h2> );
+    return ( <>
+        <Grid container spacing={2}>
+        <Grid size={{ xs: 12, md: 8 }}>
+        <ProductList />
+        </Grid>
+        </Grid>
+    </> );
 }
 
 export default Home;
