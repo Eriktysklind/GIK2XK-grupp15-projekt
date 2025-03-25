@@ -34,7 +34,7 @@ import {
       },
       {
         id: 3,
-        name: "Matteus Hjärström",
+        name: "Matteus Hjärtström",
         memberSince: "2010-01-05",
         avatarUrl: fiskImg,
         rating: 5,
