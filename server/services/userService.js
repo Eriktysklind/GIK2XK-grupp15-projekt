@@ -23,7 +23,6 @@ async function getCart(userId) {
   async function getAll() {
     try {
       const allUsers = await db.user.findAll();
-      /* Om allt blev bra, returnera allPosts */
       return createResponseSuccess(allUsers);
     } catch (error) {
       return createResponseError(error.status, error.message);

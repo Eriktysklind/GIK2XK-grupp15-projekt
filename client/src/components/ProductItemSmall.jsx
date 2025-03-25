@@ -4,14 +4,13 @@ function ProductItemSmall({product}) {
     return ( 
         <>
         <Link to= {`/products/${product.id}`}>
-            <h3>{product.title}</h3>
+            <h2>{product.title}</h2>
             </Link>
-            <p>{product.description}</p>
-            <p>{product.price}</p>
             <Link to= {`/products/${product.id}`}>
-            <img width="100"src={product.imageUrl} />
+            <img width="100"src={product.imageUrl} alt={product.title} />
             </Link>
-    </>
+            <p>{product.price}</p>
+        </>
      );
 }
 
