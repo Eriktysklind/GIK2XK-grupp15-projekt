@@ -1,14 +1,16 @@
+import { Paper, Grid2 } from "@mui/material";
 import ProductList from "../componets/ProductList";
-import Grid from '@mui/material/Grid2';
+import SatisfiedCustomers from "../componets/SatisfiedCustomers";
 
 function Home() {
     return ( 
     <>
-        <Grid container spacing={2}>
-        <Grid size={{ xs: 12, md: 8 }}>
+        <Grid2 container spacing={2} >
+        <Grid2 component="section" >
         <ProductList />
-        </Grid>
-        </Grid>
+        <SatisfiedCustomers />
+        </Grid2>
+        </Grid2>
     </>
     );
 }
