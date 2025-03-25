@@ -53,12 +53,12 @@ export async function getAll(endpoint = '/product') {
     }
   }
 
- /* export async function remove(id) {
+  export async function remove(id) {
     try {
       const response = await axios.delete('/product', { data: { id } });
       if (response.status === 200) return response.data;
       else {
-        console.log(data);
+        console.log(response.data);
         return null;
       }
     } catch (e) {
@@ -71,10 +71,10 @@ export async function getAll(endpoint = '/product') {
       const response = await axios.post(`/product/${productId}/addRating`, rating);
       if (response.status === 200) return response.data;
       else {
-        console.log(data);
+        console.log(response.data);
         return null;
       }
     } catch (e) {
       e?.response ? console.log(e.response.data) : console.log(e);
     }
-  } */
+  } 
