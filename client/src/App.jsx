@@ -12,7 +12,7 @@ function App() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/">Webbshop</Link>
           </Typography>
-          <Button color="inherit"><Link to="/products/new">Lägg till produkt</Link></Button>
+          <Button color="inherit"><Link to="products/:id/edit">Lägg till produkt</Link></Button>
         </Toolbar>
       </AppBar>
     </Box>
