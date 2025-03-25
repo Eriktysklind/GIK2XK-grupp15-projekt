@@ -1,5 +1,7 @@
+import ProductList from "../componets/ProductList";
+
 function Products() {
-    return (<h2>Products</h2> );
+    return <ProductList />;
 }
 
 export default Products;
