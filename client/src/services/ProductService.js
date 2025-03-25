@@ -58,7 +58,7 @@ export async function getAll(endpoint = '/product') {
       const response = await axios.delete('/product', { data: { id } });
       if (response.status === 200) return response.data;
       else {
-        console.log(data);
+        console.log(response.data);
         return null;
       }
     } catch (e) {
@@ -68,10 +68,10 @@ export async function getAll(endpoint = '/product') {
 
   export async function addRating(productId, rating) {
     try {
-      const response = await axios.post(`/product/${productId}/addRating`, rating);
+      const response = await axios.post(`/product/${productId}/addRating`, {rating});
       if (response.status === 200) return response.data;
       else {
-        console.log(data);
+        console.log(response.data);
         return null;
       }
     } catch (e) {

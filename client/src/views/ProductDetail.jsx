@@ -1,8 +1,9 @@
-import { Button, Rating } from "@mui/material";
+import { Button} from "@mui/material";
 import ProductItemLarge from "../componets/ProductItemLarge";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {getOne} from '../services/ProductService';
+import RatingForm from "../componets/RatingForm";
 
 function ProductDetail() {
     const { id } = useParams();
@@ -18,7 +19,7 @@ function ProductDetail() {
     <div>
         <ProductItemLarge product={product}/>
         <div>
-        <Rating/>
+        <RatingForm productId={product.id}/>
         </div>
         <Button onClick={() => navigate(-1)}>Tillbaka</Button>
         <Button onClick={() => navigate(`/products/${product.id}/edit`)}>Ändra</Button>

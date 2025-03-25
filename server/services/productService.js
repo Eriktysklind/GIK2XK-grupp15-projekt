@@ -88,7 +88,7 @@ async function getAll() {
     }
     try {
       const newRating = await db.rating.create({
-          rating: ratingData.value, 
+          rating: ratingData.rating, 
           productId: id
       });
   
