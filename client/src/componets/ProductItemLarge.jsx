@@ -11,10 +11,12 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import RatingForm from "./RatingForm";
+import specsData from '../data/specs';
 
 function ProductItemLarge({ product }) {
   const [tab, setTab] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const productSpecs = specsData[product.id];
 
   const handleTabChange = (event, newValue) => {
     setTab(newValue);
@@ -60,7 +62,6 @@ function ProductItemLarge({ product }) {
           <Tab label="SPECS" />
           <Tab label="FÄRGER" />
           <Tab label="MOTORER" />
-          <Tab label="TILLVAL" />
         </Tabs>
         <Divider sx={{ my: 1 }} />
 
@@ -87,12 +88,50 @@ function ProductItemLarge({ product }) {
               </Typography>
               <Typography variant="body1" sx={{ pb: 2 }}>
                 <ul>
-                    <li>Längd 605 cm</li>
-                    <li>Bredd 259 cm</li>
-                    <li>Fribordshöjd invändigt 73,5 cm</li>
-                    <li>Vikt 1012 kg (torrvikt utan motor)</li>
-                    <li>Max rekommenderad motor 225 hk</li>
-                    <li>Bränslekapacitet 178 liter (fasttank)</li>
+                    <li>Längd: {productSpecs.längd}</li>
+                    <li>Bredd: {productSpecs.bredd}</li>
+                    <li>Vikt: {productSpecs.vikt}</li>
+                    <li>Max rekommenderad motor: {productSpecs.motor}</li>
+                </ul>
+
+              </Typography>
+              <Typography variant="h6" fontWeight="bold">
+                Pris: {product.price} kr
+              </Typography>
+            </>
+          )}
+        </Box>
+        <Box sx={{ px: 3 }}>
+          {tab === 2 && (
+            <>
+              <Typography variant="h5" gutterBottom>
+                {product.title}
+              </Typography>
+              <Typography variant="body1" sx={{ pb: 2 }}>
+                <ul>
+                    <li>DIAMOND COAT™ 3.0 Metallic TRACKER Black (svart) reling & skrovsidor med cool grey botten.</li>
+                    <li>DIAMOND COAT™ 3.0 Metallic TRACKER Starlite Red (röd) reling & skrovsidor med cool grey botten.</li>
+                    <li>DIAMOND COAT™ 3.0 Metallic TRACKER Starlite Blue (blå) reling & skrovsidor med cool grey botten.</li>
+                </ul>
+
+              </Typography>
+              <Typography variant="h6" fontWeight="bold">
+                Pris: {product.price} kr
+              </Typography>
+            </>
+          )}
+        </Box>
+        <Box sx={{ px: 3 }}>
+          {tab === 3 && (
+            <>
+              <Typography variant="h5" gutterBottom>
+                {product.title}
+              </Typography>
+              <Typography variant="body1" sx={{ pb: 2 }}>
+                <ul>
+                    <li>Mercury 100 hk FourStroke</li>
+                    <li>Mercury 115 hk FourStroke</li>
+                    <li>Mercury 225 PRO XS V8</li>
                 </ul>
 
               </Typography>
