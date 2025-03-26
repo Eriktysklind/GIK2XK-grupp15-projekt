@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import RatingForm from "./RatingForm";
-import specsData from '../data/specs';
+import specsData from "../data/specs";
+import RatingAverage from "./RatingAverage.jsx";
 
 function ProductItemLarge({ product }) {
   const [tab, setTab] = useState(0);
@@ -88,12 +89,11 @@ function ProductItemLarge({ product }) {
               </Typography>
               <Typography variant="body1" sx={{ pb: 2 }}>
                 <ul>
-                    <li>Längd: {productSpecs.längd}</li>
-                    <li>Bredd: {productSpecs.bredd}</li>
-                    <li>Vikt: {productSpecs.vikt}</li>
-                    <li>Max rekommenderad motor: {productSpecs.motor}</li>
+                  <li>Längd: {productSpecs.längd}</li>
+                  <li>Bredd: {productSpecs.bredd}</li>
+                  <li>Vikt: {productSpecs.vikt}</li>
+                  <li>Max rekommenderad motor: {productSpecs.motor}</li>
                 </ul>
-
               </Typography>
               <Typography variant="h6" fontWeight="bold">
                 Pris: {product.price} kr
@@ -109,11 +109,16 @@ function ProductItemLarge({ product }) {
               </Typography>
               <Typography variant="body1" sx={{ pb: 2 }}>
                 <ul>
-                    <li>DIAMOND COAT™ 3.0 Metallic TRACKER Black (svart) reling & skrovsidor med cool grey botten.</li>
-                    <li>DIAMOND COAT™ 3.0 Metallic TRACKER Starlite Red (röd) reling & skrovsidor med cool grey botten.</li>
-                    <li>DIAMOND COAT™ 3.0 Metallic TRACKER Starlite Blue (blå) reling & skrovsidor med cool grey botten.</li>
+                  <li>
+                  {productSpecs.color1}
+                  </li>
+                  <li>
+                  {productSpecs.color2}
+                  </li>
+                  <li>
+                  {productSpecs.color3}
+                  </li>
                 </ul>
-
               </Typography>
               <Typography variant="h6" fontWeight="bold">
                 Pris: {product.price} kr
@@ -129,11 +134,10 @@ function ProductItemLarge({ product }) {
               </Typography>
               <Typography variant="body1" sx={{ pb: 2 }}>
                 <ul>
-                    <li>Mercury 100 hk FourStroke</li>
-                    <li>Mercury 115 hk FourStroke</li>
-                    <li>Mercury 225 PRO XS V8</li>
+                  <li>Mercury 100 hk FourStroke</li>
+                  <li>Mercury 115 hk FourStroke</li>
+                  <li>Mercury 225 PRO XS V8</li>
                 </ul>
-
               </Typography>
               <Typography variant="h6" fontWeight="bold">
                 Pris: {product.price} kr
@@ -151,9 +155,15 @@ function ProductItemLarge({ product }) {
             gap: 2,
           }}
         >
-          <Box>
+          <Box sx={{ display: "flex" }}>
+            <Box sx={{pr: 5}}>
+            <Typography variant="subtitle1">{product.title}</Typography>
+            <RatingAverage productId={product.id} />
+            </Box>
+            <Box>
             <Typography variant="subtitle1">Lämna ett betyg:</Typography>
             <RatingForm productId={product.id} />
+            </Box>
           </Box>
 
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>

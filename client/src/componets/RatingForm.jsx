@@ -6,16 +6,16 @@ import {addRating} from '../services/ProductService'
 import { useState } from 'react';
 
 const labels = {
-    0.5: 'Usel',
-    1: 'Dålig',
-    1.5: 'Dålig+',
-    2: 'Okej',
-    2.5: 'Okej+',
-    3: 'Bra',
-    3.5: 'Bra+',
-    4: 'Mycket bra',
-    4.5: 'Nästan perfekt',
-    5: 'Perfekt',
+    0.5: '0.5',
+    1: '1',
+    1.5: '1.5',
+    2: '2',
+    2.5: '2.5',
+    3: '3',
+    3.5: '3.5',
+    4: '4',
+    4.5: '4.5',
+    5: '5',
   };
 
   function getLabelText(value) {
