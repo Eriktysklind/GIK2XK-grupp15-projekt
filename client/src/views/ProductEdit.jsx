@@ -5,7 +5,7 @@ import { Button, TextField } from '@mui/material'
 function ProductEdit(){
     const { id } = useParams();
     const Navigate = useNavigate();
-    const emptyProduct = {id:0, title:"", desciption:"", image_url:"", price:"", userID:2};
+    const emptyProduct = {id:0, title:"", description:"", image_url:"", price:"", userID:2};
     const [ product, setProduct ] = useState(emptyProduct);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ function ProductEdit(){
             create(product).then(Response => Navigate('/', {replace:true, state:Response}));
            
     } else {
-        update(product).then((Response) => Navigate('/products/${product.id}', {replace:true, state:Response}))
+        update(product).then((Response) => Navigate(`/products/${product.id}`, {replace:true, state:Response}))
     }
 }
 
@@ -53,7 +53,7 @@ function onDelete(){
     <TextField onChange={onChange} value={product.description} multiline minRows={5} name="description" id="description" label='Beskrivning'/>
     </div>
     <div>
-    <TextField onChange={onChange} value={product.image_url} name="Image_url" id="Image_url" label='URL för bild'/>
+    <TextField onChange={onChange} value={product.image_url || ""} name="image_url" id="image_url" label='URL för bild'/>
     </div>
     <div>
     <TextField onChange={onChange} value={product.price} name="price" id="price" label='Pris'/>
