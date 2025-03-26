@@ -7,7 +7,7 @@ import ikon from '../assets/loggotyp.png';
 
 const Footer = () => {
   return (
-    <Box sx={{ backgroundColor: '#e3f2fd', color: 'black', py: 4}}>
+    <Box sx={{ backgroundColor: '#e3f2fd', color: 'black', py: 4 , mt: '1rem'}}>
       <Container maxWidth="lg">
         <Stack direction={{ xs: 'column', md: 'row'}} justifyContent={"space-between"} spacing={1}>
           <Box>
