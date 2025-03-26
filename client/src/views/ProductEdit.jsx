@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import {  Navigate, useNavigate, useParams } from "react-router-dom";
-import { getOne } from "../services/ProductService";
+import { create, getOne, update } from "../services/ProductService";
 import { Button, TextField } from '@mui/material'
 function ProductEdit(){
     const { id } = useParams();
     const Navigate = useNavigate();
-    const emptyProduct = {title:"", desciption:"", image_url:"", price:""};
+    const emptyProduct = {id:0, title:"", desciption:"", image_url:"", price:"", userID:2};
     const [ product, setProduct ] = useState(emptyProduct);
 
     useEffect(() => {
+        
         if (id) {
             getOne(id).then((product) => setProduct(product));
         } else {
@@ -25,9 +26,13 @@ function ProductEdit(){
     }
 
     function onSave() {
-        
-    }
+        if(product.id === 0) {
+            create(product).then(Response => {console.log(Response)});
 
+    } else {
+        update(product).then((Response) => console.log(Response))
+    }
+}
     return (
     
     <form>
