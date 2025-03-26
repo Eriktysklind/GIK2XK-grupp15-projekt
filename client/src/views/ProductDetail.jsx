@@ -18,11 +18,6 @@ function ProductDetail() {
     return product ? ( 
     <div>
         <ProductItemLarge product={product}/>
-        <div>
-        <RatingForm productId={product.id}/>
-        </div>
-        <Button onClick={() => navigate(-1)}>Tillbaka</Button>
-        <Button onClick={() => navigate(`/products/${product.id}/edit`)}>Ändra</Button>
     </div> ) : (
         <h3>Kunden inte hämta produkten</h3>
     );

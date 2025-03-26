@@ -43,10 +43,10 @@ function SatisfiedCustomers() {
   ];
 
   return (
-    <Box sx={{ mb: 5, mt: 5 }}>
+    <Box sx={{ mb: 5, mt: 5}}>
       <Paper
         elevation={3}
-        sx={{ p: 3, mb: 3, textAlign: "center", borderRadius: "1rem" }}
+        sx={{ p: 3, mb: 3, textAlign: "center", borderRadius: "1rem", bgcolor: "#fafafa"}}
       >
         <Typography variant="h4" component="h2">
           Våra nöjdaste kunder
@@ -72,6 +72,7 @@ function SatisfiedCustomers() {
                   boxShadow: 6,
                 },
                 borderRadius: "1rem",
+                bgcolor: "#fafafa"
               }}
             >
               <CardHeader

@@ -21,6 +21,7 @@ function ProductItemSmall({ product }) {
         "&:hover .hoverOverlay": {
           opacity: 1,
         },
+        bgcolor: "#fafafa"
       }}
     >
       <Box
@@ -81,7 +82,7 @@ function ProductItemSmall({ product }) {
           p: 2,
         }}
       >
-        <Typography variant="body2">{product.description}</Typography>
+        <Typography variant="body2" sx={{pb: 3}}>{product.description}</Typography>
         <RatingAverage productId={product.id} />
       </Box>
     </Paper>

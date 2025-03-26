@@ -32,7 +32,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{bgcolor: "#e3f2fd"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -62,21 +62,21 @@ function ResponsiveAppBar() {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
+                color: "#424242",
                 textDecoration: "none",
               }}
             >
               FISKEBÅTAR
             </Typography>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{  flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="#424242"
             >
               <MenuIcon />
             </IconButton>
@@ -94,7 +94,7 @@ function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" } }}
+              sx={{  display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
                 <MenuItem
@@ -104,7 +104,7 @@ function ResponsiveAppBar() {
                     if (page === "Produkter") navigate("/products/all");
                   }}
                 >
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+                  <Typography sx={{color: "#424242", textAlign: "center" }}>{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -136,7 +136,7 @@ function ResponsiveAppBar() {
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
+                color: "#424242",
                 textDecoration: "none",
               }}
             >
@@ -151,7 +151,7 @@ function ResponsiveAppBar() {
                   handleCloseNavMenu();
                   if (page === "Produkter") navigate("/products/all");
                 }}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{ my: 2, color: "#424242", display: "block" }}
               >
                 {page}
               </Button>
