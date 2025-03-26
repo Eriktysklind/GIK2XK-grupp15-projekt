@@ -7,6 +7,7 @@ import Varukorg from "./components/Varukorg";
 function App() {
 
   const [visaVarukorg, setVisaVarukorg] = useState(false);
+  const userId = 1; // Hårdkodat för testanvändare
 
   return (
     <>
@@ -20,7 +21,7 @@ function App() {
 
       {/* Visa komponenter */}
       {visaVarukorg && (
-  <Varukorg open={visaVarukorg} onClose={() => setVisaVarukorg(false)} />
+  <Varukorg userId={userId} open={visaVarukorg} onClose={() => setVisaVarukorg(false)} />
 )}
         </Toolbar>
       </AppBar>

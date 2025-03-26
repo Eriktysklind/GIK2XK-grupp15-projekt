@@ -11,15 +11,39 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Box } from '@mui/material';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
-export default function FullScreenDialog({ open, onClose }) {
-    const Transition = React.forwardRef(function Transition(props, ref) {
-      return <Slide direction="up" ref={ref} {...props} />;
-    });
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+  
+  export default function Varukorg({ open, onClose, userId }) {
+    const [user, setUser] = useState(null);
+    const [produkter, setProdukter] = useState([]);
+  
+    useEffect(() => {
+      if (open && userId) {
+        // Hämta användarens namn
+        axios.get(`http://localhost:3000/users/${userId}`)
+          .then(res => {
+            setUser(res.data);
+          })
+          .catch(err => console.error('Kunde inte hämta användare:', err));
+  
+        // Hämta varukorg
+        axios.get(`http://localhost:3000/users/${userId}/getCart`)
+          .then(res => {
+            if (res.data && res.data.products) {
+              setProdukter(res.data.products);
+            } else {
+              setProdukter([]);
+            }
+          })
+          .catch(err => console.error('Kunde inte hämta varukorg:', err));
+      }
+    }, [open, userId]);;
   
     return (
       <Dialog
@@ -39,7 +63,7 @@ export default function FullScreenDialog({ open, onClose }) {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Varukorg
+            {user ? `Varukorg för ${user.firstName} ${user.lastName}` : 'Varukorg'}
             </Typography>
             <Button autoFocus color="inherit" onClick={onClose}>
               Stäng
@@ -47,16 +71,17 @@ export default function FullScreenDialog({ open, onClose }) {
           </Toolbar>
         </AppBar>
         <List>
-          <ListItemButton>
-            <ListItemText primary="Produkt 1" secondary="Beskrivning här" />
-          </ListItemButton>
-          <Divider />
-          <ListItemButton>
-            <ListItemText
-              primary="Produkt 2"
-              secondary="Beskrivning av produkten"
-            />
-          </ListItemButton>
+            {produkter.map((produkt) => (
+                <Box key={produkt.id}>
+                <ListItemButton>
+                    <ListItemText
+                    primary={produkt.title}
+                    secondary={`Pris: ${produkt.price} kr`}
+                    />
+                </ListItemButton>
+                <Divider />
+                </Box>
+  ))}
         </List>
       </Dialog>
     );
