@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom"
-import {Box, AppBar, Toolbar, Typography, Button} from '@mui/material';
+import {Box, Container, AppBar, Toolbar, Typography, Stack, Button} from '@mui/material';
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       </AppBar>
     </Box>
       <Outlet/>
+      <Footer />
     </>
   )
 }

@@ -38,9 +38,9 @@ async function addToCart(userId, productId, amount) {
 
 async function getAll() {
     try {
-      const allProducts = await db.product.findAll({ include: [db.product] });
-      /* Om allt blev bra, returnera allPosts */
-       return createResponseSuccess(allProducts.map((product) => _formatPost(product)));
+      const allProducts = await db.product.findAll();
+    
+       return createResponseSuccess(allProducts);
     } catch (error) {
       return createResponseError(error.status, error.message);
     }
@@ -50,7 +50,6 @@ async function getAll() {
     try {
       const product = await db.product.findOne({ where: { title: productTitle } });
       const allProducts = await product.getProducts({ include: [db.product] });
-      /* Om allt blev bra, returnera allPosts */
        return createResponseSuccess(allProducts.map((product) => _formatPost(product)));
     } catch (error) {
       return createResponseError(error.status, error.message);
@@ -76,8 +75,7 @@ async function getAll() {
 
   async function getById(id) {
     try {
-      const product = await db.product.findOne(id);
-      /* Om allt blev bra, returnera post */
+      const product = await db.product.findByPk(id);
       return createResponseSuccess(product);
     } catch (error) {
       return createResponseError(error.status, error.message);
@@ -90,7 +88,7 @@ async function getAll() {
     }
     try {
       const newRating = await db.rating.create({
-          rating: ratingData.value, 
+          rating: ratingData.rating, 
           productId: id
       });
   
