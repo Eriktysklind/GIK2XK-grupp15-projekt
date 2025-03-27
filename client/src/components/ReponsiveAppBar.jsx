@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import loggotyp from "../assets/loggotyp.png";
 import { Link } from "react-router-dom";
 
-const pages = ["Produkter", "Uppdatera", "Varukorg"];
+const pages = ["Produkter", "Lägg till produkt", "Varukorg"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -102,6 +102,7 @@ function ResponsiveAppBar() {
                   onClick={() => {
                     handleCloseNavMenu();
                     if (page === "Produkter") navigate("/products/all");
+                    if (page === "Lägg till produkt") navigate("/products/edit");
                   }}
                 >
                   <Typography sx={{color: "#424242", textAlign: "center" }}>{page}</Typography>
@@ -150,6 +151,7 @@ function ResponsiveAppBar() {
                 onClick={() => {
                   handleCloseNavMenu();
                   if (page === "Produkter") navigate("/products/all");
+                  if (page === "Lägg till produkt") navigate("/products/edit");
                 }}
                 sx={{ my: 2, color: "#424242", display: "block" }}
               >

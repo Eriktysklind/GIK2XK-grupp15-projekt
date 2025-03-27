@@ -14,11 +14,13 @@ import {
   import specsData from "../data/specs";
   import RatingAverage from "./RatingAverage.jsx";
   import { addToCart } from "../services/ProductService";
+  import {  Navigate, useNavigate } from "react-router-dom";
   
   function ProductItemLarge({ product }) {
     const [tab, setTab] = useState(0);
     const [amount, setAmount] = useState(1);
     const productSpecs = specsData[product.id];
+    const Navigate = useNavigate();
   
     const handleTabChange = (event, newValue) => {
       setTab(newValue);
@@ -169,6 +171,8 @@ import {
             </Box>
   
             <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+            <Button onClick={() => Navigate(`/products/${product.id}/edit`)}>Ändra</Button>
+
               <TextField
                 label="Antal"
                 type="number"
