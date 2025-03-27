@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import UserItemSmall from './UserItemSmall';
-import { getAll } from '../services/UserService';
+import { useEffect, useState } from "react";
+import UserItemSmall from "./UserItemSmall";
+import { getAll } from "../services/UserService";
 function UserList() {
   const [users, setUsers] = useState([]);
 
@@ -11,9 +11,7 @@ function UserList() {
   return (
     <ul>
       {users?.length > 0 ? (
-        users.map((user) => (
-            <h3>{user.firstName}</h3>
-        ))
+        users.map((user) => <h3>{user.firstName}</h3>)
       ) : (
         <h3>Kunde inte hämta användare</h3>
       )}

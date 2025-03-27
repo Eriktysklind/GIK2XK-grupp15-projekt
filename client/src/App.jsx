@@ -1,23 +1,24 @@
-import { Link, Outlet } from "react-router-dom"
-import {Box, AppBar, Toolbar, Typography, Button} from '@mui/material'
+import {  Outlet } from "react-router-dom"
+import { Box, Container} from '@mui/material';
+import ResponsiveAppBar from "./components/ReponsiveAppBar";
+import Footer from "./components/Footer";
+
 
 function App() {
 
-
   return (
     <>
-     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Link to="/">Webbshop</Link>
-          </Typography>
-          <Button color="inherit"><Link to="products/edit">Lägg till produkt</Link></Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
-
-        <Outlet />
+    <Box sx={{
+      bgcolor: "#f5f5f5",
+      minHeight: "100vh",
+    }}>
+    <ResponsiveAppBar />
+    <Container sx={{mt: 4}} maxWidth="xl" component="main">
+      <Outlet/>
+      </Container>
+      <Footer/>
+      </Box>
+      
     </>
   )
 }

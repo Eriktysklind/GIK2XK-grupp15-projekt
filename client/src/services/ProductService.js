@@ -68,7 +68,7 @@ export async function getAll(endpoint = '/product') {
 
   export async function addRating(productId, rating) {
     try {
-      const response = await axios.post(`/product/${productId}/addRating`, rating);
+      const response = await axios.post(`/product/${productId}/addRating`, {rating});
       if (response.status === 200) return response.data;
       else {
         console.log(response.data);
@@ -77,4 +77,33 @@ export async function getAll(endpoint = '/product') {
     } catch (e) {
       e?.response ? console.log(e.response.data) : console.log(e);
     }
-  } 
+  }
+
+  export async function showRating(productId) {
+    try {
+      const response = await axios.get(`/product/${productId}/ratings`);
+      if (response.status === 200) return response.data;
+      else {
+        console.log(response.data);
+        return null;
+      }
+    } catch (e) {
+      e?.response ? console.log(e.response.data) : console.log(e);
+    }
+  }
+
+  export async function addToCart(productId, userId, amount) {
+    try {
+      const response = await axios.post(`/product/${productId}/addToCart`, {
+        userId,
+        amount
+      });
+      if (response.status === 200) return response.data;
+      else {
+        console.log(response.data);
+        return null;
+      }
+    } catch (e) {
+      e?.response ? console.log(e.response.data) : console.log(e);
+    }
+  }
