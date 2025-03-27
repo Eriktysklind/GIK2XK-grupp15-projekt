@@ -5,7 +5,7 @@ import { Button, TextField } from '@mui/material'
 function ProductEdit(){
     const { id } = useParams();
     const Navigate = useNavigate();
-    const emptyProduct = {id:0, title:"", description:"", image_url:"", price:"", userID:2};
+    const emptyProduct = {id:0, title:"", description:"", imageUrl:"", price:"", userID:2};
     const [ product, setProduct ] = useState(emptyProduct);
 
     useEffect(() => {
@@ -53,7 +53,7 @@ function onDelete(){
     <TextField onChange={onChange} value={product.description} multiline minRows={5} name="description" id="description" label='Beskrivning'/>
     </div>
     <div>
-    <TextField onChange={onChange} value={product.image_url || ""} name="image_url" id="image_url" label='URL för bild'/>
+    <TextField onChange={onChange} value={product.imageUrl || ""} name="imageUrl" id="imageUrl" label='URL för bild'/>
     </div>
     <div>
     <TextField onChange={onChange} value={product.price} name="price" id="price" label='Pris'/>
