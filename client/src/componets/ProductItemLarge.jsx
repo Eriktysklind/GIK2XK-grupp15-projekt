@@ -13,19 +13,21 @@ import { useState } from "react";
 import RatingForm from "./RatingForm";
 import specsData from "../data/specs";
 import RatingAverage from "./RatingAverage.jsx";
+import { addToCart } from "../services/ProductService";
 
 function ProductItemLarge({ product }) {
   const [tab, setTab] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+  const [amount, setAmount] = useState(1);
   const productSpecs = specsData[product.id];
 
   const handleTabChange = (event, newValue) => {
     setTab(newValue);
   };
 
-  const handleAddToCart = () => {
-    //Bygga funktionaliteten för denna
-    console.log(`Lagt till ${quantity} x ${product.title} i varukorgen`);
+  const handleAddToCart = async () => {
+    const userId = 1;
+    await addToCart(product.id, userId, amount)
+    console.log(`Lagt till ${amount} x ${product.title} i varukorgen`);
   };
 
   return (
@@ -171,8 +173,8 @@ function ProductItemLarge({ product }) {
               label="Antal"
               type="number"
               size="small"
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
+              value={amount}
+              onChange={(e) => setAmount(Number(e.target.value))}
               sx={{ width: "100px" }}
             />
             <Button

@@ -25,12 +25,22 @@ router.post('/:id/addRating', async (req, res) => {
   }
 });
 
-router.post('/:id/addToCart', (req, res) => {
-  // Bygga funktionaliteten för att placera produkter i varukorgen.
+/* router.post('/:id/addToCart', (req, res) => {
+
     const { userId, amount, productId } = req.body; 
     const cartId = req.params.id;
   
     productService.addToCart(userId, productId, amount, cartId).then((result) => {
+      res.status(result.status).json(result.data);
+    });
+  }); */
+
+  router.post('/:id/addToCart', (req, res) => {
+
+    const { userId, amount } = req.body; 
+    const productId = req.params.id;
+  
+    productService.addToCart(userId, productId, amount).then((result) => {
       res.status(result.status).json(result.data);
     });
   });

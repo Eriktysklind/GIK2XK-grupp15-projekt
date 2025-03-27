@@ -24,14 +24,18 @@ async function addToCart(userId, productId, amount) {
       where: { userId: userId },
       defaults: { userId: userId },
     });
-    await db.cartRow.upsert({
+    console.log("Cart hittad eller skapad:", cart.id);
+
+    const result = await db.cartRow.upsert({
       cartId: cart.id,
       productId: productId,
       amount: amount,
     });
+    console.log("Upsert-resultat:", result);
 
     return createResponseSuccess({ cartId: cart.id, productId, amount });
   } catch (error) {
+    console.error("💥 Fel i addToCart:", error);
     return createResponseError(error.status, error.message);
   }
 }
