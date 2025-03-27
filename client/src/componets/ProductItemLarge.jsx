@@ -20,11 +20,13 @@ import RatingForm from "./RatingForm";
 import specsData from "../data/specs";
 import RatingAverage from "./RatingAverage.jsx";
 import { addToCart } from "../services/ProductService";
+import {  Navigate, useNavigate } from "react-router-dom";
 
 function ProductItemLarge({ product }) {
   const [tab, setTab] = useState(0);
   const [amount, setAmount] = useState(1);
   const productSpecs = specsData[product.id];
+  const Navigate = useNavigate();
 
   const handleTabChange = (event, newValue) => {
     setTab(newValue);
@@ -51,7 +53,7 @@ function ProductItemLarge({ product }) {
           textShadow: "2px 2px 4px rgba(0,0,0,0.7)",
         }}
       >
-        <Typography variant="h3" fontWeight="bold" sx={{}}>
+        <Typography variant="h3" fontWeight="bold">
           {product.title}
         </Typography>
       </Box>
@@ -175,6 +177,7 @@ function ProductItemLarge({ product }) {
           </Box>
 
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+          <Button onClick={() => Navigate(`/products/${product.id}/edit`)}>Ändra</Button>
             <TextField
               label="Antal"
               type="number"

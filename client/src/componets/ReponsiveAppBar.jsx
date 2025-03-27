@@ -130,7 +130,7 @@ function ResponsiveAppBar() {
                     handleCloseNavMenu();
                     if (page === "Produkter") navigate("/products/all");
                     if (page === "Lägg till produkter")
-                      navigate("/products/edit");
+                      navigate("/products/new");
                     if (page === "Varukorg") handleOpenCart();
                   }}
                 >
@@ -183,7 +183,7 @@ function ResponsiveAppBar() {
                   handleCloseNavMenu();
                   if (page === "Produkter") navigate("/products/all");
                   if (page === "Lägg till produkter")
-                    navigate("/products/edit");
+                    navigate("/products/new");
                   if (page === "Varukorg") handleOpenCart();
                 }}
                 sx={{ my: 2, color: "#424242", display: "block" }}

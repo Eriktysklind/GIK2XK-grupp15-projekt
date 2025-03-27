@@ -25,9 +25,9 @@ function App() {
     {!userId ? (
       <Login open={true} onLogin={handleLogin} />
     ) : (
-      <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh" }}>
+      <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh", display: 'flex', flexDirection: 'column'}}>
         <ResponsiveAppBar />
-        <Container sx={{ mt: 4 }} maxWidth="xl" component="main">
+        <Container sx={{ mt: 4, flex: 1}} maxWidth="xl" component="main">
           <Outlet />
         </Container>
         <Footer />
