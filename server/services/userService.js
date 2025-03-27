@@ -11,7 +11,7 @@ async function getCart(userId) {
         const cart = await db.cart.findOne({
             where: { userId: userId },
             include: [{
-                model: db.product, // Hämtar produkter direkt via relationen
+                model: db.product, 
             }]
         });
        return createResponseSuccess(cart);

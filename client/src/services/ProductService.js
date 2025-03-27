@@ -1,3 +1,7 @@
+//Vi har byggt upp vår ProductService i frontend efter hur det gjordes på lektionera och anpassat namngivningen 
+//så att det fungerar efter våra databaser. Vi har byggt funktionaliteten för addRating, showRating och addToCart
+//med inspiriation från andra delar i föreläsningarna. 
+
 import axios from './api';
 
 export async function getAll(endpoint = '/product') {

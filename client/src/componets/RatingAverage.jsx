@@ -1,3 +1,7 @@
+//RatingAverage är uppbyggd för att kunna hämta och visa det aktuella betyget på en produkt. 
+//Här importerar vi Rating från material UI för att kunna visa det visuellt. 
+//Denna data visar sig i komponeterna ProductItemSmall och ProductItemLarge.
+
 import { Box, Rating, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { showRating } from "../services/ProductService"; 

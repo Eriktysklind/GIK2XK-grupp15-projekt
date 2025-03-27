@@ -25,6 +25,7 @@ router.post('/:id/addRating', async (req, res) => {
   }
 });
 
+//tidigare lösning för addtocart
 /* router.post('/:id/addToCart', (req, res) => {
 
     const { userId, amount, productId } = req.body; 
@@ -94,6 +95,7 @@ router.get('/:id/ratings', async (req, res) => {
       return res.status(500).json({ message: "Ett internt serverfel uppstod vid betygsättningen" });
   }
 });
+
 
 
 module.exports = router;

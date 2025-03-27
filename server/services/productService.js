@@ -35,7 +35,6 @@ async function addToCart(userId, productId, amount) {
 
     return createResponseSuccess({ cartId: cart.id, productId, amount });
   } catch (error) {
-    console.error("💥 Fel i addToCart:", error);
     return createResponseError(error.status, error.message);
   }
 }

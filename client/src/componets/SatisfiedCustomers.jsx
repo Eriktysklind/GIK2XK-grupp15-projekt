@@ -1,3 +1,7 @@
+//Vi har lagt till en extra design på startsidan som hade kunnat bli aktuell om det fanns en customer databas.
+//Vi visar upp recensioner från kunder som har lagt ett betyg och använder oss av flertalet komponeter och layouts som hämtas från material UI
+//Vi har hårdkodad en "customer databas" för att kunna visa det på hemsidan.
+
 import {
   Card,
   CardHeader,

@@ -84,4 +84,18 @@ router.delete('/', (req, res) => {
   });
 });
 
+// Test för inloggnings funktionalitet som en alternativ lösning till varukorgen
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await db.user.findOne({ where: { email } });
+    if (!user || user.password !== password) {
+      return res.status(401).json({ message: "Fel e-post eller lösenord" });
+    }
+    return res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Serverfel vid inloggning" });
+  }
+});
+
 module.exports = router;

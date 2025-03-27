@@ -1,3 +1,9 @@
+//Vi har byggt upp en komponent för en mer detaljerad vy av produkterna och här har vi använt oss av flertalet funktioner hos material UI.
+//Denna komponent visa produkten och viktigt information. Det finns även möjlighet att lägga till produkten i varukorgen.
+//Med hjälp av material UI har vi byggt tabs som ska symbolisera mer specifika data om produkterna och den
+//datan finns inte i databasen och därför valde vi att lägga till data i folderna data och filen specs. Det för att kunna visa hur man kan bygga upp infon
+//PÅ denna sida tar vi inte båda komponeterna för Rating och visar det för användare. 
+
 import {
   Box,
   Typography,
@@ -25,7 +31,7 @@ function ProductItemLarge({ product }) {
   };
 
   const handleAddToCart = async () => {
-    const userId = 1;
+    const userId = localStorage.getItem("userId");
     await addToCart(product.id, userId, amount)
     console.log(`Lagt till ${amount} x ${product.title} i varukorgen`);
   };

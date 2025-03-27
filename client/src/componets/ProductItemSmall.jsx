@@ -1,3 +1,8 @@
+//Vi har byggt en komponent för att kunna visa flera produkter samtigt och har använt oss av Paper och box för att designa den. 
+//Den visar den mest relevanta information och har en hover funktion som overlay.
+//Vid overlay visar vi en beskrivningen av produkten och betyget på produkten. 
+//Vi har använt oss av sx för att placera komponeterna och designa de. 
+
 import { Paper, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import RatingAverage from "./RatingAverage.jsx"

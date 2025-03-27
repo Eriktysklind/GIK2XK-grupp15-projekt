@@ -1,3 +1,7 @@
+//Vi hara skapat en komponent för en footer som visas på varje sida och den läggs in i App.jsx
+//En simpel komponent som har kontaktuppgifter och socialamedier information. 
+//Vi har använt oss av material UI men inte någon specifik komponent på deras hemsida. 
+
 import React from 'react';
 import { Box, Container, Typography, Link, Stack } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';

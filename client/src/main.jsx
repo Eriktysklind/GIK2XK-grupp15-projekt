@@ -6,7 +6,7 @@ import Products from './views/Products.jsx'
 import ProductDetail from './views/ProductDetail.jsx'
 import Home from './views/Home.jsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import ProductEdit from './componets/ProductEdit.jsx'
+import ProductEdit from './views/ProductEdit.jsx'
 import { CssBaseline } from '@mui/material'
 
 
@@ -27,9 +27,10 @@ const router = createBrowserRouter([
       element: <ProductDetail/>
     },
     {
-      path: "products/:id/edit",
+      path: "products/edit",
       element: <ProductEdit/>
     },
+
     
   ] 
 }]);

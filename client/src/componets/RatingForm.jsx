@@ -1,3 +1,7 @@
+//Vi har använt oss av https://mui.com/material-ui/react-rating/#hover-feedback för att kunna skicka en rating på en produkt.
+//Vi har använt designen som finns på material UI och lagt till att ratingen skickas till vår databas för att sedan
+//visuellt kunna representeras med hjälp av komponenten RatingAverage.
+
 import * as React from 'react';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';

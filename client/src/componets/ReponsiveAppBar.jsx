@@ -1,3 +1,7 @@
+//Vi har använt oss av https://mui.com/material-ui/react-app-bar/#app-bar-with-responsive-menu för att bygga upp vår navbar för hemsidan
+//Den tillhandahåller länkar för alla olika views som är relevanta och finns på alla views.
+//Den är tillagda i App.jsx så att det finns på alla sidor. 
+
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,12 +16,16 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import loggotyp from "../assets/loggotyp.png";
 import { Link } from "react-router-dom";
+import Cart from "./CartDrawer";
+import { getOne } from "../services/UserService";
 
-const pages = ["Produkter", "Uppdatera", "Varukorg"];
+const pages = ["Produkter", "Lägg till produkter", "Varukorg"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [cartOpen, setCartOpen] = React.useState(false);
+  const [cartItems, setCartItems] = React.useState([]);
   const navigate = useNavigate();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -30,9 +38,28 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const handleOpenCart = async () => {
+    const userId = localStorage.getItem("userId");
+    const cartData = await getOne(userId);
+  
+    if (!cartData || !Array.isArray(cartData.products)) {
+      setCartItems([]);
+      return;
+    }
+  
+    const items = cartData.products.map((product) => ({
+      productId: product.id,
+      title: product.title,
+      price: product.price,
+      amount: product.cartRow.amount,
+    }));
+  
+    setCartItems(items);
+    setCartOpen(true);
+  };
 
   return (
-    <AppBar position="static" sx={{bgcolor: "#e3f2fd"}}>
+    <AppBar position="static" sx={{ bgcolor: "#e3f2fd" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -69,7 +96,7 @@ function ResponsiveAppBar() {
               FISKEBÅTAR
             </Typography>
           </Box>
-          <Box sx={{  flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -94,7 +121,7 @@ function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{  display: { xs: "block", md: "none" } }}
+              sx={{ display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
                 <MenuItem
@@ -102,9 +129,14 @@ function ResponsiveAppBar() {
                   onClick={() => {
                     handleCloseNavMenu();
                     if (page === "Produkter") navigate("/products/all");
+                    if (page === "Lägg till produkter")
+                      navigate("/products/edit");
+                    if (page === "Varukorg") handleOpenCart();
                   }}
                 >
-                  <Typography sx={{color: "#424242", textAlign: "center" }}>{page}</Typography>
+                  <Typography sx={{ color: "#424242", textAlign: "center" }}>
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -150,6 +182,9 @@ function ResponsiveAppBar() {
                 onClick={() => {
                   handleCloseNavMenu();
                   if (page === "Produkter") navigate("/products/all");
+                  if (page === "Lägg till produkter")
+                    navigate("/products/edit");
+                  if (page === "Varukorg") handleOpenCart();
                 }}
                 sx={{ my: 2, color: "#424242", display: "block" }}
               >
@@ -177,6 +212,11 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
+      <Cart
+        open={cartOpen}
+        onClose={() => setCartOpen(false)}
+        cartItems={cartItems}
+      />
     </AppBar>
   );
 }

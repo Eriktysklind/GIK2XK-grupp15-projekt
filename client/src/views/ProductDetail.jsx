@@ -1,9 +1,8 @@
-import { Button} from "@mui/material";
 import ProductItemLarge from "../componets/ProductItemLarge";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {getOne} from '../services/ProductService';
-import RatingForm from "../componets/RatingForm";
+
 
 function ProductDetail() {
     const { id } = useParams();
@@ -13,7 +12,7 @@ function ProductDetail() {
     useEffect(() => {
         getOne(id).then((product) => setProduct(product));
     }, [id]);
-    const navigate = useNavigate();
+
 
     return product ? ( 
     <div>
