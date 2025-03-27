@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import {  Navigate, useNavigate, useParams } from "react-router-dom";
 import { create, getOne, remove, update } from "../services/ProductService";
-import { Button, TextField } from '@mui/material'
+import { Box, Button, Container, TextField, Typography } from '@mui/material'
+import RestoreIcon from '@mui/icons-material/Restore';
+import SailingIcon from '@mui/icons-material/Sailing';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 function ProductEdit(){
     const { id } = useParams();
     const Navigate = useNavigate();
@@ -43,33 +47,47 @@ function onDelete(){
 }
 
     return (
-    
-    <form>
-    
-    <div>
-        <TextField onChange={onChange} value={product.title} name='title' id='title' label='Titel'/>
-    </div>
-    <div>
-    <TextField onChange={onChange} value={product.description} multiline minRows={5} name="description" id="description" label='Beskrivning'/>
-    </div>
-    <div>
-    <TextField onChange={onChange} value={product.imageUrl || ""} name="imageUrl" id="imageUrl" label='URL för bild'/>
-    </div>
-    <div>
+    <Container maxWidth="lg">
+        <Typography variant="h4" component={"h2"}>{product.id ? 'Ändra' : 'Lägg till produkt'} 
+
+        </Typography>
+        <Box mt={2}>
+<form>
+    <Box>
+        <TextField fullWidth margin="normal" onChange={onChange} value={product.title} name='title' id='title' label='Titel'/>
+    </Box>
+    <Box>
+    <TextField fullWidth margin="normal" onChange={onChange} value={product.description} multiline minRows={5} name="description" id="description" label='Beskrivning'/>
+    </Box>
+    <Box>
+    <TextField fullWidth margin="normal" onChange={onChange} value={product.imageUrl || ""} name="imageUrl" id="imageUrl" label='URL för bild'/>
+    </Box>
+    <Box>
     <TextField onChange={onChange} value={product.price} name="price" id="price" label='Pris'/>
-    </div>
-    <div>
-    <Button variant= 'contained' onClick={() => Navigate(-1)}>Tillbaka</Button>
+    </Box>
+    <Box  mt={2}  sx={{
+    display: 'grid',
+    gridAutoFlow: 'row',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridTemplateRows: 'repeat(2, 50px)',
+    gap: 1,
+  }}>
+    <Button startIcon={<RestoreIcon/>} sx={{ gridColumn: '1', gridRow: '2 / 3' }} 
+     variant= 'contained' onClick={() => Navigate(-1)}>Tillbaka</Button>
 
     {id  && (
-        <Button onClick={onDelete} variant="contained" color="error">
+        <Button startIcon={<DeleteForeverIcon/>}  onClick={onDelete} variant="contained" color="error">
             Ta bort
         </Button>
     )}
 
-    <Button onClick={onSave} variant='contained' color='success'>Spara Båt</Button>
-    </div>
+    <Button startIcon={<SailingIcon/>} sx={{ gridColumn: '5', gridRow: '2 / 3' }} 
+
+    onClick={onSave} variant='contained' color='success'>Spara Båt</Button>
+    </Box>
 </form>
+</Box>
+</Container>
     );
 }
 
